@@ -28,7 +28,7 @@ export const PostDetails = () => {
   if (loading) return <Loader />;
 
   return (
-    <div className="h-screen flex flex-col max-w-3xl mx-auto bg-white p-6 rounded shadow space-y-8">
+    <div className="h-screen flex flex-col max-w-3xl mx-auto bg-white p-6 rounded shadow">
       <section className="space-y-4">
         {author && (
           <PostAuthor
@@ -41,14 +41,14 @@ export const PostDetails = () => {
         <h1 className="text-3xl font-bold mb-2">{post?.title}</h1>
         <p className="text-gray-700">{post?.body}</p>
       </section>
-      <section className="flex flex-col flex-1 overflow-y-auto">
-        <h2 className="text-2xl font-semibold mb-4 border-b border-gray-300 pb-2">
+      <section className="flex flex-col flex-1 min-h-0 mt-6">
+        <h2 className="text-2xl font-semibold mb-4 border-b border-gray-300 pb-2 shrink-0">
           Comments ({comments?.length})
         </h2>
         {comments?.length === 0 ? (
           <p className="text-gray-500">No comments yet.</p>
         ) : (
-          <ul className="space-y-4">
+          <ul className="flex-1 overflow-y-auto space-y-4 pr-2">
             {comments?.map((comment) => (
               <PostComment key={comment.id} comment={comment} />
             ))}
