@@ -1,10 +1,20 @@
+import { MouseEventHandler } from "react";
 import { User } from "../../interfaces/User";
 
-export const PostAuthor = ({ author }: { author: User }) => {
+export const PostAuthor = ({
+  author,
+  onClick,
+}: {
+  author: User;
+  onClick: MouseEventHandler<HTMLDivElement>;
+}) => {
   const avatarUrl = `https://api.dicebear.com/7.x/avataaars/svg?seed=${author.name}`;
 
   return (
-    <div className="flex items-center gap-4 hover:cursor-pointer">
+    <div
+      className="flex items-center gap-4 hover:cursor-pointer"
+      onClick={onClick}
+    >
       <img
         src={avatarUrl}
         alt={`${author.name}`}
